@@ -1,0 +1,8 @@
+<h1><%= ListName %></h1>
+<div>
+    <% TodoListData.forEach(function(TodoItem) { %>
+        <%= TodoItem %>
+        <br>
+    <% }); %>
+</div>
+<%- include('./newtask.ejs', {listname : ListName }) %>}

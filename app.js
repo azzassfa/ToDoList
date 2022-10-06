@@ -186,7 +186,8 @@ app.post("/newtask", function(req, res){
 //     });
 // }
 
+const PORT = process.env.PORT || 5000;
 
-app.listen(3001, function(err){
-    console.log("Listening on Port 3000");
+app.listen(PORT, function(err){
+    console.log("Listening on Port " + PORT);
 });

@@ -1,15 +1,30 @@
+//jshint esversion:6
+
+/* TO DO
+
+- CSS
+- save db username and password in env
+- deploy to heroku 
+*/
+
 const express = require("express")
 const ejs = require("ejs")
 const mongoose = require("mongoose")
 const bodyParser = require("body-parser")
+const session = require('express-session');
 
-const app = new express();
-app.use(bodyParser.urlencoded({ extended: true }));
-//app.use(bodyParser.json());
+
+const app = express();
+
+app.use(express.static("public"));
 app.set('view engine', 'ejs');
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 
 mongoose.connect(
-    "mongodb://localhost:27017/testDB",
+//    "mongodb://localhost:27017/testDB",
+    "mongodb+srv://dbuser:dbpassword@c1.6slaw.mongodb.net/?retryWrites=true&w=majority",
     {
       useNewUrlParser: true,
     }, function(error) {
@@ -39,10 +54,10 @@ const todoListSchema = {
   
   const TodoList = mongoose.model("TodoList", todoListSchema);
 
-  app.get("/", function(req, res) {
-    console.log("Redirecting to /list/home");
-    res.redirect("/list/home");
+  app.get("/", function(req, res){
+    res.render("home");
   });
+  
 
 app.get("/list/:listName", function(req, res) {
 
@@ -172,6 +187,6 @@ app.post("/newtask", function(req, res){
 // }
 
 
-app.listen(3000, function(err){
+app.listen(3001, function(err){
     console.log("Listening on Port 3000");
 });

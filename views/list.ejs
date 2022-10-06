@@ -1,8 +1,16 @@
-<h1><%= ListName %></h1>
-<div>
-    <% TodoListData.forEach(function(TodoItem) { %>
-        <%= TodoItem %>
-        <br>
-    <% }); %>
+<%- include('partials/header') %>
+
+<div class="list">
+    <h1><%= ListName %></h1>
+    <div>
+        <% TodoListData.forEach(function(TodoItem) { %>
+            <% if (TodoItem.CompleteDate == null) { %>
+            <div>
+                <input type="checkbox" id="<%= TodoItem._id %>" \>             
+                <%= TodoItem.Task %>
+            </div>
+            <% } %>
+        <% }); %>
+    </div>
+    <%- include('./newtask.ejs', {listname : ListName }) %>
 </div>
-<%- include('./newtask.ejs', {listname : ListName }) %>}

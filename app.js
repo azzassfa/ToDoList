@@ -2,9 +2,10 @@
 
 /* TO DO
 
+- handle lowercase
 - CSS
 - save db username and password in env
-- deploy to heroku 
+- deploy to heroku (done)
 */
 
 const express = require("express")
@@ -58,6 +59,9 @@ const todoListSchema = {
     res.render("home");
   });
   
+  app.post("/", function(req,res){
+    res.redirect("list/"+req.body.list); 
+  });
 
 app.get("/list/:listName", function(req, res) {
 

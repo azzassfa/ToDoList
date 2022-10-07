@@ -3,8 +3,8 @@
 /* TO DO
 
 - handle lowercase
-- CSS
-- save db username and password in env
+- CSS 
+- save db username and password in env (done)
 - deploy to heroku (done)
 */
 

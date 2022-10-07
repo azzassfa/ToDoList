@@ -1,4 +1,35 @@
 .list {
-    border : 1px solid black;
+    border : none;
     padding: 25px;
+    width: 100%;
+}
+.list-title {
+    background-color: #ff9900;
+    padding: 10px;
+    padding-bottom: 0%;
+    margin-bottom: 0%;
+    font-size: 5em;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    width: 100%;
+}
+.list-contents {
+    width: 100%;
+    background-color: #dddddd;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+.todo-item {
+    font-size: 2em;
+    padding-left: 2%;
+}
+.new-task-form {
+    padding:2%
+}
+.button {
+    font-size:large;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 5px;
 }

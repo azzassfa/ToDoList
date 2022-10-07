@@ -1,14 +1,16 @@
 <%- include('partials/header') %>
 
+<div class="container-fluid">
+    <div class="list">
+        <form action="/" method="post">
+        Search List: <input type="text" name="list">
+        <input type="submit">
+    </form>
+    </div>
+    <div class="text-primary" style="font-size:2em;">
+        Type a list name to access. if the list doesn't exist, a new one will be created for you.<br>
+        Don't hesitate to try, it is FREE!
+    </div>
+</div>
 
-<div class="list">
-    <form action="/" method="post">
-    <input type="text" name="list">
-    <input type="submit">
-</form>
-</div>
-<div class="list">
-    Type a list name to access. if the list doesn't exist, a new one will be created for you.<br>
-    Don't hesitate to try, it is FREE!
-</div>
 <%- include('partials/footer') %>

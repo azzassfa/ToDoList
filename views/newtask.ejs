@@ -1,5 +1,11 @@
-<form action="/newtask" method="post">
-    <input type="hidden" name="listname" value="<%= listname %>" \>
-    Task : <input name="task" type="text" \>
-    <input type="submit" text="Save" \>
-</form>
+<div class="container-fluid">
+        <div class="form-group">
+        <form action="/newtask" method="post" class="new-task-form">
+            <input type="hidden" name="listname" value="<%= listname %>" \>
+            <p class="todo-item" style="font-size: 1.3em;">
+                New Task : <input name="task" type="text" class="new" \>
+                <input type="submit" value="Save" class="btn-primary button" \>
+            </p>
+        </form>
+    </div>
+</div>

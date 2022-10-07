@@ -1,16 +1,43 @@
 <%- include('partials/header') %>
 
-<div class="list">
-    <h1><%= ListName %></h1>
-    <div>
+<div class="container-fluid">
+  
+    <div class="card-body list">
+      <h4 class="card-title list-title"><%= ListName %></h4>
+      <div class="list-contents">
         <% TodoListData.forEach(function(TodoItem) { %>
             <% if (TodoItem.CompleteDate == null) { %>
-            <div>
-                <input type="checkbox" id="<%= TodoItem._id %>" \>             
-                <%= TodoItem.Task %>
-            </div>
+                <div class="card-text text-dark text-primary todo-item">
+                    <input type="checkbox" id="<%= TodoItem._id %>" \>             
+                    <%= TodoItem.Task %>    
+                </div>
             <% } %>
         <% }); %>
+        <hr size="2">
+    <div>
+        <%- include('./newtask.ejs', {listname : ListName }) %>
+    </div>
+</div>
+<div>
+</div>
+
+<!-- <div class="list">
+    <div class="jumbotron">
+        <h1><%= ListName %></h1>
+    </div>
+        <div class="list-contents">
+        <div class="todo-item">
+            <% TodoListData.forEach(function(TodoItem) { %>
+                <% if (TodoItem.CompleteDate == null) { %>
+                <div>
+                    <input type="checkbox" id="<%= TodoItem._id %>" \>             
+                    <%= TodoItem.Task %>
+                </div>
+                <% } %>
+            <% }); %>
+        </div>
     </div>
     <%- include('./newtask.ejs', {listname : ListName }) %>
 </div>
+ -->
+<%- include('partials/footer') %>

@@ -8,6 +8,8 @@
 - deploy to heroku (done)
 */
 
+require('dotenv').config();
+
 const express = require("express")
 const ejs = require("ejs")
 const mongoose = require("mongoose")
@@ -23,9 +25,13 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
+dbuser = process.env.DB_USER;
+dbpassword = process.env.DB_PASSWORD;
+
+
 mongoose.connect(
 //    "mongodb://localhost:27017/testDB",
-    "mongodb+srv://dbuser:dbpassword@c1.6slaw.mongodb.net/?retryWrites=true&w=majority",
+    "mongodb+srv://" + dbuser + ":" + dbpassword + "@c1.6slaw.mongodb.net/?retryWrites=true&w=majority",
     {
       useNewUrlParser: true,
     }, function(error) {

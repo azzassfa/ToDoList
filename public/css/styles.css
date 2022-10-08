@@ -24,12 +24,23 @@
     padding-left: 2%;
 }
 .new-task-form {
+    font-size: 2em;
     padding:2%
 }
 .button {
-    font-size:large;
+    font-size:0.65em;
     padding: 5px;
     padding-left: 15px;
     padding-right: 15px;
     border-radius: 5px;
+}
+.container-fluid {
+    padding: 2% 5%;
+}
+.new-task {
+    border: none;
+    border-radius: 15px;
+    height: 65px;
+    width: 50%;
+    font-size: 0.8em;
 }

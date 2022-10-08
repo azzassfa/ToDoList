@@ -1,6 +1,32 @@
 <%- include('partials/header') %>
 
 <div class="container-fluid">
+  <div class="row">
+    <div class="card-body list-title">
+        <form action="/" method="post">
+            <h1 style="display: inline;">Search List: </h1><input type="text" id="list" name="list" class="new-task">
+            <input type="submit" value="Go" class="btn-primary button" onclick="if(document.getElementById('list').value=='') return false;" \>
+        </form>
+    </div>            
+        <div class="list-contents">
+            <ul>
+            <li><h1 style="padding:1%;">Todos - by azz is an online tool to manage multiple todo lists.</h1></li>
+            <li><h1 style="padding:1%;">Type a list name in the search box to access it. If the list doesn't exist, a new one will be created for you.</h1></li>
+            <li><h1 style="padding:1%;">These are public lists and what you post will be visible to others (anonymously). Please do not post any sensitive information.</h1></li>
+            <li><h1 style="padding:1%;">Don't hesitate to try, it is FREE!</h1></li>
+            </ul>
+            
+            <hr>
+
+<div>
+</div>
+</div>
+<%- include('partials/footer') %>
+</div>
+<br>
+
+<!-- <div class="container-fluid">
+    <div class="row">
     <div class="list">
         <form action="/" method="post">
         Search List: <input type="text" name="list">
@@ -12,5 +38,5 @@
         Don't hesitate to try, it is FREE!
     </div>
 </div>
-
-<%- include('partials/footer') %>
+</div>
+ -->

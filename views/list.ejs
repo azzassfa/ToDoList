@@ -8,8 +8,13 @@
         <% TodoListData.forEach(function(TodoItem) { %>
             <% if (TodoItem.CompleteDate == null) { %>
                 <div class="card-text text-dark text-primary todo-item">
-                    <input type="checkbox" id="<%= TodoItem._id %>" \>             
-                    <%= TodoItem.Task %>    
+                    <form action="/markcomplete" method="post">
+                        <div class="item">
+                          <input type="checkbox" name="checkbox" value="<%=TodoItem._id%>" onChange="this.form.submit()">
+                          <%= TodoItem.Task %>
+                        </div>
+                        <input type="hidden" name="listName" value="<%= ListName %>"></input>
+                      </form>
                 </div>
             <% } %>
         <% }); %>

@@ -92,11 +92,6 @@ app.get("/list/:listName", function(req, res) {
             }     
             console.log("ListExists End");
         });
-
-    
-    
-
-
 });
 
 app.get("/newlist/:listName", function(req, res){
@@ -104,16 +99,22 @@ app.get("/newlist/:listName", function(req, res){
     console.log("NewList Start");
     console.log("Creating list");
 
-    newTask = {
+    newTask = [{
       SNo : 1,
       Task : "Start here...",
       CreatedDate : new Date(),
       CompleteDate : ""
-    }
+    },
+    {
+      SNo : 2,
+      Task : "Click checkboxes to mark tasks compelete...",
+      CreatedDate : new Date(),
+      CompleteDate : ""
+    }]
 
     const newTodoList = new TodoList({
         list: newListName,
-        todoitems: [newTask]
+        todoitems: newTask
       });
       console.log("Saving Start");
 
@@ -175,8 +176,64 @@ app.post("/newtask", function(req, res){
       }     
       console.log("ListExists End");
   });
-
 });
+
+app.post("/markcomplete", function (req, res) {
+  listName = req.body.listName;
+  task = req.body.checkbox;
+
+  console.log("NewTask Start for list ==> "+listName+" and task ID ==> "+task);
+  TodoList.findOne({ list:listName}, function(err, foundTodoLists){
+      console.log("mongo find one executed");
+      if (err || foundTodoLists === null)
+      {
+          console.log("err or found TodoLists null");
+          console.log(listToShow + " doesn't exist.");
+          res.redirect("list/" +foundTodoLists.list);
+      }        
+      else
+      {
+
+          console.log("Found list to modify ==> " + foundTodoLists);
+          var indexOfFoundTask = -1;
+
+          for (var i=0; i<foundTodoLists.todoitems.length;i++)
+          {
+            if (foundTodoLists.todoitems[i]._id == task)
+            {
+              console.log("found item to mark complete - " + task);
+              indexOfFoundTask = i;
+              foundTodoLists.todoitems[i].CompleteDate=new Date();
+            }  
+          }
+/*           newTask = {
+            SNo : foundTodoLists.todoitems.length+1,
+            Task : task,
+            CreatedDate : new Date(),
+            CompleteDate : new Date()
+          }
+ */          
+//          foundTodoLists.todoitems.push(newTask);
+          console.log("ARRAY TO UPSERT ===> " +foundTodoLists.todoitems);
+
+          TodoList.updateOne(
+          { list: listName },
+          { $set: { todoitems : foundTodoLists.todoitems } },
+          { upsert: true }, // Make this update into an upsert
+          function (err, docs) {
+            if (err){
+                console.log("Mark Complete errror" + err)
+            }
+            else{
+                console.log("Mark Complete Docs : ", docs);
+            }
+            res.redirect("list/" +foundTodoLists.list);
+          });
+      }     
+      console.log("Mark Complete End");
+  });
+});
+
 
 // function listExists() {
 //     console.log("ListExists Start");
